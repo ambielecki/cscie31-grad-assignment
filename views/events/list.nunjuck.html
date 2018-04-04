@@ -1,0 +1,103 @@
+{% extends 'layouts/main.nunjuck.html' %}
+
+{% block title %}
+    2018 Schedule of Events
+{% endblock %}
+
+{% block content %}
+    {% if user_type %}
+        <div class="row">
+            <div class="col s12">
+                <a href="/events/create" class="waves-effect waves-light btn">Schedule New Event</a>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if future_events.length > 0 %}
+        <div class="row">
+            <h4 class="col s12">Upcoming Events</h4>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                {% for future_event in future_events %}
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title event_title_dark">
+                                {% if user_type %}
+                                    <a href="/events/edit/{{ future_event.id }}">{{ future_event.title }}</a>
+                                {% else %}
+                                    {{ future_event.title }}
+                                {% endif %}
+                            </span>
+                            <div class="row">
+                                <div class="col s6">
+                                    <b>Date: </b>{{ future_event.date }}
+                                </div>
+                                <div class="col s6">
+                                    <b>Time: </b>{{ future_event.time }}
+                                </div>
+                                <div class="col s6">
+                                    <b>Location: </b>{{ future_event.location }}
+                                </div>
+                                <div class="col s12">
+                                    <b>Event Description: </b>{{ future_event.description }}
+                                </div>
+                            </div>
+                            {% if user_type %}
+                                <div class="row">
+                                    <div class="col s12">
+                                        <a href="/events/edit/{{ future_event.id }}" class="waves-effect waves-light btn">Edit / Cancel Event</a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    {# this is definitely not DRY, need to look into how to pass variables into includes, but the colors are different, so it may be a pain #}
+    {% if past_events.length > 0 %}
+        <div class="row">
+            <h4 class="col s12">Past Events</h4>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                {% for past_event in past_events %}
+                    <div class="card grey darken-1">
+                        <div class="card-content white-text">
+                            <span class="card-title event_title_white">
+                                {% if user_type %}
+                                    <a href="/events/edit/{{ past_event.id }}">{{ past_event.title }}</a>
+                                {% else %}
+                                    {{ past_event.title }}
+                                {% endif %}
+                            </span>
+                            <div class="row">
+                                <div class="col s6">
+                                    <b>Date: </b>{{ past_event.date }}
+                                </div>
+                                <div class="col s6">
+                                    <b>Time: </b>{{ past_event.time }}
+                                </div>
+                                <div class="col s6">
+                                    <b>Location: </b>{{ past_event.location }}
+                                </div>
+                                <div class="col s12">
+                                    <b>Event Description: </b>{{ past_event.description }}
+                                </div>
+                            </div>
+                            {% if user_type %}
+                                <div class="row">
+                                    <div class="col s12">
+                                        <a href="/events/edit/{{ past_event.id }}" class="waves-effect waves-light btn">Edit / Cancel Event</a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

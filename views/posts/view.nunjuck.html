@@ -1,0 +1,40 @@
+{% extends 'layouts/main.nunjuck.html' %}
+
+{% block title %}
+    View Post
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                {% if post.lead_image %}
+                    <div class="card-image">
+                        <img src="/images/posts/{{ post.lead_image }}">
+                        <div class="card-title"><h4 class="white-text">{{ post.title }}</h4></div>
+                    </div>
+                {% endif %}
+                <div class="card-content">
+                    {% if not post.lead_image %}
+                        <div class="card-title">
+                            <h4>{{ post.title}}</h4>
+                        </div>
+                    {% endif %}
+                    <p class="smaller_text">Posted: {{ post.date }}</p>
+                    <div class="row">
+                        <div class="col s12 lead_content">
+                            {{ post.content | safe }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            {% if user_type %}
+                                <a href="/posts/edit/{{ post.id }}" class="waves-effect waves-light btn">Edit Post</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

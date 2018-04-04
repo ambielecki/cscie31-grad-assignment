@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/libraries/materialize/sass/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="/css/main.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    {% block head %}{% endblock %}
+    <title>
+        {% block title %}CSCI E31 Assignment 4{% endblock %}
+    </title>
+</head>
+
+<body>
+    {% include 'includes/nav.nunjuck.html' %}
+
+    <div class="container">
+        {% include 'includes/messages.nunjuck.html' %}
+        {% block content %}{% endblock %}
+    </div>
+
+    <script type="text/javascript" src="/libraries/materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+    {% block body %}{% endblock %}
+    <footer class="materialize-red darken-3">
+        <div class="container row" id="footer_div">
+            <div class="col s12 center-align">
+                <a href="https://github.com/ambielecki">Visit me on Github <i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% if success.length > 0 %}
+    <div class="row dismiss_target">
+        <div class="col s12">
+            <div class="card green lighten-3">
+                <div class="card-content">
+                    <div class="row no_margin_bottom">
+                        <div class="col s11">
+                            {{ success }}
+                        </div>
+                        <div class="col s1 right-align"><span class="dismiss_button"><i class="far fa-times-circle"></i></span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if error.length > 0 %} {# oh the divs, so many divs #}
+    <div class="row dismiss_target">
+        <div class="col s12">
+            <div class="card red lighten-3">
+                <div class="card-content">
+                    <div class="row no_margin_bottom">
+                        <div class="col s11">
+                            <ul class="no_margin_bottom no_margin_top">
+                                {% for message in error %}
+                                    <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="col s1 right-align">
+                            <span class="dismiss_button"><i class="far fa-times-circle"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

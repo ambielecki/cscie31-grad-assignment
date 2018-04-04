@@ -1,0 +1,31 @@
+{% extends 'layouts/main.nunjuck.html' %}
+
+{% block title %}
+    Add User
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Add User</span>
+                    <form id="user_form" action="/users/create" method="post">
+                        {% include 'users/form.nunjuck.html' %}
+                        <div class="row">
+                            <div class="col s12">
+                                <button class="btn waves-effect waves-light" type="submit">Add User
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <script type="text/javascript" src="/js/users/form.js"></script>
+{% endblock %}

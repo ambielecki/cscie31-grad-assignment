@@ -1,0 +1,96 @@
+{% extends 'layouts/main.nunjuck.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col s12 m8">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        {% if post.lead_image %}
+                            <div class="card-image">
+                                <img src="/images/posts/{{ post.lead_image }}">
+                                <div class="card-title"><h4 class="white-text">{{ post.title }}</h4></div>
+                            </div>
+                        {% endif %}
+                        <div class="card-content">
+                            {% if not post.lead_image %}
+                                <div class="card-title"><h4>{{ post.title or 'Coming Soon!' }}</h4></div>
+                            {% endif %}
+                            <p class="smaller_text">Posted: {{ post.date }}</p>
+                            <div class="lead_content">
+                                {% if post %}
+                                    {{ post.content | safe }}
+                                {% else %}
+                                    <p>The 2018 season is right around the corner, we will be posting more information in the coming weeks.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4">
+            <div class="row">
+                <div class="col s12">
+                    <ul class="collection with-header card">
+                        <li class="collection-header">
+                            <h5>Upcoming Events</h5>
+                        </li>
+                        {% if events %}
+                            {% for event in events %}
+                                <li class="collection-item">
+                                    <h6>{{ event.title }}</h6>
+                                    <div class="row small_text">
+                                        <div class="col s12">
+                                            <b>Date: </b>{{ event.date }}
+                                        </div>
+                                        <div class="col 12">
+                                            <b>Time: </b>{{ event.time }}
+                                        </div>
+                                        <div class="col 12">
+                                            <b>Location: </b>{{ event.location }}
+                                        </div>
+                                        <div class="col s12">
+                                            <b>Event Description: </b>{{ event.description }}
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            <li>
+                                <h6>No scheduled events, stay tuned for more info</h6>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <ul class="collection with-header card">
+                        <li class="collection-header">
+                            <h5>Previous Posts</h5>
+                        </li>
+                        {% if previous_posts.length > 0 %}
+                            {% for previous_post in previous_posts %}
+                                <li class="collection-item small_text">
+                                    <h6>
+                                        <a href="/posts/view/{{ previous_post.id }}">{{ previous_post.title }}</a>
+                                    </h6>
+                                    <p class="smaller_text">Posted: {{ previous_post.date }}</p>
+                                    {{ previous_post.content | safe }}
+                                    {% if previous_post.read_more %}
+                                        <a href="/posts/view/{{ previous_post.id }}">read more...</a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            <li class="collection-item">
+                                <h6>We'll be adding more info as the season progresses, stay tuned!</h6>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
