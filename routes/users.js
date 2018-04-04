@@ -7,7 +7,7 @@ let local_auth     = require('../helpers/local_authorize');
 let urlencodedParser = body_parser.urlencoded({ extended: false });
 
 // create
-router.get('/create', local_auth.isAdmin, userController.getCreate);
-router.post('/create', [local_auth.isAdmin, urlencodedParser], userController.postCreate);
+router.get('/create', userController.getCreate);
+router.post('/create', urlencodedParser, userController.postCreate);
 
 module.exports = router;

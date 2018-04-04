@@ -1,7 +1,7 @@
 let User   = require('../models/userModel');
 let bcrypt = require('bcryptjs');
 
-let user_types = ['admin', 'coach'];
+let user_types = ['admin', 'user'];
 
 module.exports.getCreate = function (req, res, next) {
     res.render('users/create.nunjuck.html', {

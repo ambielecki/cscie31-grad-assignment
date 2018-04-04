@@ -12,11 +12,9 @@ let User = require('./models/userModel');
 
 // routing requirements
 let root    = require('./routes/root');
-let players = require('./routes/players');
-let posts   = require('./routes/posts');
-let events  = require('./routes/events');
 let users   = require('./routes/users');
 let login   = require('./routes/login');
+let test    = require('./routes/test.js');
 
 // auth requirements
 let passport      = require('passport');
@@ -91,11 +89,9 @@ app.use((req, res, next) => {
 
 // routing
 app.use('/', root);
-app.use('/players', players);
-app.use('/posts', posts);
-app.use('/events', events);
 app.use('/users', users);
 app.use('/login', login);
+app.use('/test', test);
 // just not worth setting up a route file for this
 app.use('/logout', function (req, res){
     req.logout();

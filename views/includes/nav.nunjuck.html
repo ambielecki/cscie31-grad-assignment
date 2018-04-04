@@ -1,12 +1,12 @@
 <nav class="row">
     <div class="nav-wrapper">
         <div class="col s12">
-            <a href="/" class="brand-logo">Cardinals 2018</a>
+            <a href="/" class="brand-logo">Auth with Passport</a>
             <a href="#" data-target="mobile_cardinals_nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/posts"><i class="far fa-file-alt"></i> Posts</a></li>
-                <li><a href="/players"><i class="far fa-user"></i> Roster</a></li>
-                <li><a href="/events"><i class="far fa-calendar-alt"></i> Schedule</a></li>
+                <li><a href="/users/create"><i class="far fa-user"></i> Create a new user</a></li>
+                <li><a href="/test/admin"> Admin Test</a></li>
+                <li><a href="/test/user"> User Test</a></li>
                 {% if user_type %}
                     <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 {% else %}
@@ -18,9 +18,9 @@
 </nav>
 
 <ul class="sidenav" id="mobile_cardinals_nav">
-    <li><a href="/posts">Posts</a></li>
-    <li><a href="/players">Roster</a></li>
-    <li><a href="/events">Schedule</a></li>
+    <li><a href="/users/create">Create a new user</a></li>
+    <li><a href="/test/admin">Admin Test</a></li>
+    <li><a href="/test/user">User Test</a></li>
     {% if user_type %}
         <li><a href="/logout">Logout</a></li>
     {% else %}
